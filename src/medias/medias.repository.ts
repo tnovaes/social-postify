@@ -4,7 +4,7 @@ import { CreateMediaDto } from "./dto/create-media.dto";
 import { UpdateMediaDto } from "./dto/uptdate-media.dto";
 
 @Injectable()
-export class MediaRepository {
+export class MediasRepository {
     constructor(private readonly prisma: PrismaService) { }
 
     async create(createMediaDto: CreateMediaDto) {
@@ -25,8 +25,8 @@ export class MediaRepository {
 
     async update(id: number, updateMediaDto: UpdateMediaDto) {
         return await this.prisma.medias.update({
+            where: { id },
             data: updateMediaDto,
-            where: { id }
         });
     }
 

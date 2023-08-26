@@ -1,11 +1,11 @@
 import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
-import { MediaRepository } from './medias.repository';
+import { MediasRepository } from './medias.repository';
 import { CreateMediaDto } from './dto/create-media.dto';
 import { UpdateMediaDto } from './dto/uptdate-media.dto';
 
 @Injectable()
 export class MediasService {
-    constructor(private readonly mediasRepository: MediaRepository) {}
+    constructor(private readonly mediasRepository: MediasRepository) {}
 
     async create(createMediaDto: CreateMediaDto) {
         const existing = await this.mediasRepository.findExisting(createMediaDto.title, createMediaDto.username);
