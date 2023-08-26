@@ -6,7 +6,7 @@ import { PostsService } from './posts.service';
 
 @Controller('posts')
 export class PostsController {
-    constructor(private readonly postsService: PostsService) {}
+    constructor(private readonly postsService: PostsService) { }
 
     @Post()
     @HttpCode(httpStatus.CREATED)

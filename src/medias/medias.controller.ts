@@ -6,7 +6,7 @@ import { UpdateMediaDto } from './dto/uptdate-media.dto';
 
 @Controller('medias')
 export class MediasController {
-    constructor(private readonly mediasService: MediasService) {}
+    constructor(private readonly mediasService: MediasService) { }
 
     @Post()
     @HttpCode(httpStatus.CREATED)
