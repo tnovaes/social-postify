@@ -2,7 +2,7 @@ import { Injectable, ConflictException, NotFoundException, ForbiddenException } 
 import { MediasRepository } from './medias.repository';
 import { CreateMediaDto } from './dto/create-media.dto';
 import { UpdateMediaDto } from './dto/uptdate-media.dto';
-import { PublicationsRepository } from 'src/publications/publications.repository';
+import { PublicationsRepository } from '../publications/publications.repository';
 
 @Injectable()
 export class MediasService {

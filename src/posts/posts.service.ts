@@ -2,7 +2,7 @@ import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/commo
 import { PostsRepository } from './posts.repository';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-import { PublicationsRepository } from 'src/publications/publications.repository';
+import { PublicationsRepository } from '../publications/publications.repository';
 
 @Injectable()
 export class PostsService {

@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { MediasRepository } from 'src/medias/medias.repository';
-import { PostsRepository } from 'src/posts/posts.repository';
 import { CreatePublicationDto } from './dto/create-publication.dto';
 import { UpdatePublicationDto } from './dto/update-publication.dto';
 import { PublicationsRepository } from './publications.repository';
+import { MediasRepository } from '../medias/medias.repository';
+import { PostsRepository } from '../posts/posts.repository';
 
 @Injectable()
 export class PublicationsService {
@@ -23,8 +23,8 @@ export class PublicationsService {
         return await this.publicationRepository.create(createPublicationDto);
     }
 
-    async findAll() {
-        return await this.publicationRepository.findAll();
+    async findAll(published: string | null, after: string | null) {
+        return await this.publicationRepository.findAll(published, after);
     }
 
     async findOne(id: number) {

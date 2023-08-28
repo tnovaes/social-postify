@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
 import { UpdatePublicationDto } from "./dto/update-publication.dto";
 import { CreatePublicationDto } from "./dto/create-publication.dto";
+import { PrismaService } from "../prisma/prisma.service";
 
 @Injectable()
 export class PublicationsRepository {
@@ -13,8 +13,15 @@ export class PublicationsRepository {
         });
     }
 
-    async findAll() {
-        return await this.prisma.publications.findMany();
+    async findAll(published: string | null, after: string | null) {
+        return await this.prisma.publications.findMany({
+            where: {
+                date: {
+                    lt: published === 'true' ? new Date() : undefined,
+                    gte: published === 'false' ? new Date() : after ? new Date(after) : undefined,
+                },
+            },
+        });
     }
 
     async findOne(id: number) {

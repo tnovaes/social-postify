@@ -1,4 +1,4 @@
-import { Get, Post, Put, Delete, Body, Param, Controller, HttpCode, ParseIntPipe } from '@nestjs/common';
+import { Get, Post, Put, Delete, Body, Param, Controller, HttpCode, ParseIntPipe, Query } from '@nestjs/common';
 import * as httpStatus from 'http-status';
 import { PublicationsService } from './publications.service';
 import { CreatePublicationDto } from './dto/create-publication.dto';
@@ -15,8 +15,11 @@ export class PublicationsController {
     }
 
     @Get()
-    findAll() {
-        return this.publicationsService.findAll();
+    findAll(
+        @Query('published') published: string | null,
+        @Query('after') after: string | null,
+    ) {
+        return this.publicationsService.findAll(published, after);
     }
 
     @Get(':id')
